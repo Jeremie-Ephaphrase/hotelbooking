@@ -1,0 +1,19 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: grey; 
+}
+
+h1{
+    color: brown;
+    margin: 11px 23px 27px 570px;
+}
+
+form
+ {
+margin: 11px 10px 10px 570px;
+}
+
+form label {
+    color: white;
+}
