@@ -1,4 +1,5 @@
 <?php
+//start session 
 session_start();
 ?>
 
@@ -13,6 +14,7 @@ session_start();
 
         </head>
         <body>
+        //fill in the form
             <h1>Hotel Bookings</h1>
                 <form class="submission" role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
 
@@ -35,7 +37,7 @@ session_start();
 </html>
    <?php
     require_once "connect.php";
-
+//creating table into a database
    $sql = "CREATE TABLE IF NOT EXISTS bookings(
        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
        firstname VARCHAR(50),
@@ -68,7 +70,7 @@ session_start();
 //}
 
 
-
+//calculate days amount 
 $daysbooked = $interval->format('%d');
    $value;
 switch($_SESSION['hotelname']){
@@ -121,10 +123,41 @@ echo "<div class='feedback'> <br> Firstname: ". $_SESSION['firstname'] . "<br>
 
 <style>
 
-h2{
+
+h1{
     text-align: center;
     color: white;
     text-transform: uppercase;
+}
+
+ h2{
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+}
+
+select {
+    display: block;
+    width: 68%;
+    padding: 8px 77px 8px 93px;
+    margin: 0px 0px 0px 61px;
+}
+
+#submit {
+    border: 0px;
+    background-color: crimson;
+    padding: 8px 77px 8px 93px;
+    margin: 0px 0px 0px 61px;
+    color: white;
+    width: 68%;
+    text-transform: uppercase;
+    cursor: pointer; }
+
+    form {
+    display: block;
+    padding: 8px 77px 8px 244px;
+    margin: 0px 0px 0px 61px;
+    
 }
 
 </style>
