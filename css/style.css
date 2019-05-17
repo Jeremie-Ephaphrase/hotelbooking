@@ -1,19 +1,66 @@
 body{
-    margin: 0px;
-    padding: 0px;
-    background-color: grey; 
+    background-image : url('../img/hotel.jpg');
+    background-size: cover;
 }
-
+     
 h1{
-    color: brown;
-    margin: 11px 23px 27px 570px;
+    text-align: center;
+    color: darkturquoise;
+    text-transform: uppercase;
 }
 
-form
- {
-margin: 11px 10px 10px 570px;
-}
-
-form label {
+h2{
+    text-align: center;
     color: white;
+    text-transform: uppercase;
 }
+
+.feedback {
+    text-align:center;
+    font-size: 30px; 
+    color: white;
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.booking{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+select{
+    display: block;
+    width: 85%;
+    padding: 8px 77px 8px 93px;
+    margin: 0px 0px 0px 61px;
+}
+
+.form-inline {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+input {
+    display: block;
+    width: 50%;
+    padding: 8px 77px 8px 93px;
+    margin: 0px 0px 0px 61px;
+}
+
+#submit{
+    border: 0px;
+    background-color: crimson;
+    padding: 8px 155px 8px 106px;
+    margin: 2rem auto;
+    color: white;
+    width: 85%;
+    text-transform: uppercase;
+    cursor: pointer;}
+
+    #submit:hover{
+        background-color: darkred;
+    }
