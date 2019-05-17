@@ -3,17 +3,6 @@ body{
     background-size: cover;
 }
      
-h1{
-    text-align: center;
-    color: darkturquoise;
-    text-transform: uppercase;
-}
-
-h2{
-    text-align: center;
-    color: white;
-    text-transform: uppercase;
-}
 
 .feedback {
     text-align:center;
@@ -31,12 +20,6 @@ h2{
     margin: 2rem auto;
 }
 
-select{
-    display: block;
-    width: 85%;
-    padding: 8px 77px 8px 93px;
-    margin: 0px 0px 0px 61px;
-}
 
 .form-inline {
     max-width: 500px;
@@ -51,15 +34,6 @@ input {
     margin: 0px 0px 0px 61px;
 }
 
-#submit{
-    border: 0px;
-    background-color: crimson;
-    padding: 8px 155px 8px 106px;
-    margin: 2rem auto;
-    color: white;
-    width: 85%;
-    text-transform: uppercase;
-    cursor: pointer;}
 
     #submit:hover{
         background-color: darkred;
