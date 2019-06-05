@@ -14,8 +14,9 @@ session_start();
 
         </head>
         <body>
-        //fill in the form
+
             <h1>Hotel Bookings</h1>
+            
                 <form class="submission" role="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
 
         
@@ -37,7 +38,7 @@ session_start();
 </html>
    <?php
     require_once "connect.php";
-//creating table into a database
+//creating table into a database 
    $sql = "CREATE TABLE IF NOT EXISTS bookings(
        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
        firstname VARCHAR(50),
@@ -50,7 +51,7 @@ session_start();
 
    $conn ->query($sql);
    echo $conn-> error;
-   
+  
    //write to database
 
    if(isset($_POST['submit'])){
@@ -68,6 +69,13 @@ session_start();
 
        $interval = $datetime1-> diff($datetime2);
 //}
+
+$checkInStamp = strtotime($_SESSION['indate']);
+$checkOutStamp = strtotime($_SESSION['outdate']);
+if ($checkInStamp - $checkOutStamp > 86400 || $checkInStamp == $checkOutStamp) {
+    header("Location: ?erro=timestamp");
+    exit;
+}
 
 
 //calculate days amount 
@@ -93,7 +101,22 @@ switch($_SESSION['hotelname']){
  default:
  return "Invalid Booking";
 }
-   
+
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$result = mysqli_query($conn,"SELECT hotelname, indate, outdate, firstname, lastname FROM bookings WHERE firstname='$firstname' && lastname='$lastname'"); 
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<div class='feedback'> You have a booking already! 
+        <br> Firstname: ". $row['firstname'] . 
+        "<br> Lastname: " . $row['lastname'].
+        "<br> Start Date: " . $row['indate'].
+        "<br> End Date: " . $row['outdate'].
+        "<br> Hotel Name: " . $row['hotelname'].
+        "<br>" . $interval->format('%d days') . "<br> total: " . $value . "</div>";
+        
+    } 
+}
 
 echo "<div class='feedback'> <br> Firstname: ". $_SESSION['firstname'] . "<br>
    Lastname: " . $_SESSION['lastname'].
@@ -121,6 +144,18 @@ echo "<div class='feedback'> <br> Firstname: ". $_SESSION['firstname'] . "<br>
     }
 ?>
 
+<?php
+    if (isset($_GET['error']) && $_GET['error'] == 'timestamp') {
+?>
+        <div class='panel panel-default'>
+        <h3>
+            You must atleast select 1 day
+        </h3>
+        </div>
+<?php
+    }
+?>
+
 <style>
 
 
@@ -138,7 +173,7 @@ h1{
 
 select {
     display: block;
-    width: 68%;
+    width: 69%;
     padding: 8px 77px 8px 93px;
     margin: 0px 0px 0px 61px;
 }
@@ -148,6 +183,17 @@ select {
     background-color: crimson;
     padding: 8px 77px 8px 93px;
     margin: 0px 0px 0px 61px;
+    color: white;
+    width: 69%;
+    text-transform: uppercase;
+        cursor: pointer; }
+
+    
+button#submit {
+    border: 0px;
+    background-color: crimson;
+    padding: 8px 77px 8px 93px;
+    margin: 0px 0px 0px 85px;
     color: white;
     width: 68%;
     text-transform: uppercase;
@@ -159,6 +205,6 @@ select {
     margin: 0px 0px 0px 61px;
     
 }
-
 </style>
+
 
